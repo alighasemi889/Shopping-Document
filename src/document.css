@@ -1,0 +1,201 @@
+:root {
+  /* Light theme */
+  --bg-color-light: #f5f7fa;
+  --text-color-light: #2c3e50;
+  --heading-color-light: #34495e;
+  --border-color-light: #2980b9;
+  --code-bg-light: #272822;
+  --code-color-light: #f8f8f2;
+  --card-bg-light: #ffffff;
+  --shadow-light: 0 4px 15px rgba(0,0,0,0.1);
+  --btn-bg-light: #2980b9;
+  --btn-color-light: #fff;
+
+  /* Dark theme */
+  --bg-color-dark: #1e1e2f;
+  --text-color-dark: #d1d1e9;
+  --heading-color-dark: #aec6cf;
+  --border-color-dark: #4da6ff;
+  --code-bg-dark: #2d2d3f;
+  --code-color-dark: #f8f8f2;
+  --card-bg-dark: #2a2a40;
+  --shadow-dark: 0 4px 15px rgba(0,0,0,0.6);
+  --btn-bg-dark: #4da6ff;
+  --btn-color-dark: #1e1e2f;
+}
+
+/* پیش‌فرض تم لایت */
+body.light-theme {
+  --bg-color: var(--bg-color-light);
+  --text-color: var(--text-color-light);
+  --heading-color: var(--heading-color-light);
+  --border-color: var(--border-color-light);
+  --code-bg: var(--code-bg-light);
+  --code-color: var(--code-color-light);
+  --card-bg: var(--card-bg-light);
+  --shadow: var(--shadow-light);
+  --btn-bg: var(--btn-bg-light);
+  --btn-color: var(--btn-color-light);
+}
+
+/* تم دارک */
+body.dark-theme {
+  --bg-color: var(--bg-color-dark);
+  --text-color: var(--text-color-dark);
+  --heading-color: var(--heading-color-dark);
+  --border-color: var(--border-color-dark);
+  --code-bg: var(--code-bg-dark);
+  --code-color: var(--code-color-dark);
+  --card-bg: var(--card-bg-dark);
+  --shadow: var(--shadow-dark);
+  --btn-bg: var(--btn-bg-dark);
+  --btn-color: var(--btn-color-dark);
+}
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  direction: rtl;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 5vw;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  line-height: 1.7;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.section {
+  flex: 1 1 45%;
+  background-color: var(--bg-color);
+  padding: 1.8rem 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  min-width: 280px;
+  max-width: 480px;
+  box-sizing: border-box;
+}
+
+.heading {
+  color: var(--heading-color);
+  border-bottom: 3px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.9rem;
+  font-weight: 700;
+  user-select: none;
+}
+
+.text {
+  font-size: 1.15rem;
+  color: var(--text-color);
+}
+
+.codeBlock {
+  background-color: var(--code-bg);
+  color: var(--code-color);
+  padding: 1rem 1.3rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-family: 'Fira Code', monospace, monospace;
+  overflow-x: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.list {
+  list-style-type: disc;
+  padding-left: 1.8rem;
+  color: var(--text-color);
+  font-size: 1.15rem;
+  margin-top: 0;
+}
+
+.toggleBtn,
+.downloadBtn {
+  position: fixed;
+  right: 20px;
+  padding: 0.7rem 1.3rem;
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1001;
+}
+
+.toggleBtn {
+  top: 20px;
+}
+
+.downloadBtn {
+  top: 70px;
+}
+
+.title {
+  text-align: center;
+  color: var(--heading-color);
+  margin-bottom: 3rem;
+  font-size: 2.9rem;
+  font-weight: 700;
+  user-select: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .sectionsWrapper {
+    flex-direction: column;
+    gap: 1.8rem;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  .section {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: auto;
+    padding: 1.6rem 1.4rem;
+    font-size: 1.1rem;
+  }
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .text,
+  .list {
+    font-size: 1.1rem;
+  }
+  .toggleBtn {
+    top: 15px;
+    right: 15px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  .downloadBtn {
+    top: 55px;
+    right: 15px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
