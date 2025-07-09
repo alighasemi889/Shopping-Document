@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import "./document.css";
+
 const lightTheme = {
   "--bg-color": "#f5f7fa",
   "--text-color": "#2c3e50",
@@ -34,7 +33,6 @@ const applyTheme = (theme) => {
   }
 };
 
-
 const Documentation = () => {
   const [theme, setTheme] = useState("light");
   const docRef = useRef(null);
@@ -48,29 +46,10 @@ const Documentation = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  const generatePDF = () => {
-    const input = docRef.current;
-    if (!input) return;
-
-    html2canvas(input, { scale: 2, useCORS: true }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save("documentation.pdf");
-    });
-  };
-
   return (
     <div className="container" ref={docRef}>
       <button className="toggleBtn" onClick={toggleTheme}>
         {theme === "light" ? "دارک مود" : "لایت مود"}
-      </button>
-
-      <button className="downloadBtn" onClick={generatePDF}>
-        دانلود PDF
       </button>
 
       <h1 className="title">مستندات پروژه</h1>
@@ -79,14 +58,19 @@ const Documentation = () => {
         <section className="section">
           <h2 className="heading">۱. معرفی پروژه</h2>
           <p className="text">
-           این پروژه یک فروشگاه آنلاین لوازم آرایشی است که با هدف ارائه محصولات متنوع و باکیفیت در حوزه زیبایی طراحی شده است. کاربران می‌توانند به راحتی محصولات مورد نیاز خود را مشاهده، انتخاب و خریداری کنند. رابط کاربری ساده و تجربه خرید روان از ویژگی‌های اصلی این پروژه است.
+            این پروژه یک فروشگاه آنلاین لوازم آرایشی است که با هدف ارائه محصولات
+            متنوع و باکیفیت در حوزه زیبایی طراحی شده است. کاربران می‌توانند به
+            راحتی محصولات مورد نیاز خود را مشاهده، انتخاب و خریداری کنند. رابط
+            کاربری ساده و تجربه خرید روان از ویژگی‌های اصلی این پروژه است.
           </p>
         </section>
 
         <section className="section">
           <h2 className="heading">۲. زمان شروع پروژه</h2>
           <p className="text">
-            این پروژه فروشگاهی از 28 فروردین 1404 شروع شده و تاکنون مراحل طراحی و توسعه آن به‌صورت مستمر ادامه دارد. هدف ما ارائه یک تجربه خرید آنلاین حرفه‌ای و کاربرپسند در حوزه لوازم آرایشی است.
+            این پروژه فروشگاهی از 28 فروردین 1404 شروع شده و تاکنون مراحل طراحی و
+            توسعه آن به‌صورت مستمر ادامه دارد. هدف ما ارائه یک تجربه خرید آنلاین
+            حرفه‌ای و کاربرپسند در حوزه لوازم آرایشی است.
           </p>
         </section>
 
@@ -133,21 +117,20 @@ const Documentation = () => {
               <code>node_module/</code>: وابستگی های پروژه
             </li>
             <li>
-              <code>dist/</code>:  نسخه نهایی پروژه
+              <code>dist/</code>: نسخه نهایی پروژه
             </li>
             <li>
               <code>Parcel/</code>: باندلر پروژه
             </li>
-           
           </ul>
         </section>
 
         <section className="section">
           <h2 className="heading">۶. نحوه استفاده</h2>
           <p className="text">
-            برای استفاده از این پروژه، کافی است پس از نصب و راه‌اندازی، کامپوننت‌ها
-            را وارد برنامه خود کرده و از آن‌ها استفاده کنید. همچنین می‌توانید با
-            افزودن کامپوننت جدید در مسیر مناسب، پروژه را توسعه دهید.
+            برای استفاده از این پروژه، کافی است پس از نصب و راه‌اندازی،
+            کامپوننت‌ها را وارد برنامه خود کرده و از آن‌ها استفاده کنید. همچنین
+            می‌توانید با افزودن کامپوننت جدید در مسیر مناسب، پروژه را توسعه دهید.
           </p>
         </section>
       </div>
